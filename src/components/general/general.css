@@ -1,0 +1,80 @@
+/* Input */
+div [class*="_inputDiv"] {
+	display: flex;
+	flex-direction: column;
+}
+
+div [class*="_inputLabel"] {
+	align-items: center;
+	display: flex;
+	flex-direction: row;
+}
+
+div [class*="_inputDiv"] input {
+	border: none;
+	border-bottom: 1px solid red;
+}
+
+div [class*="_inputDiv"] input:focus,
+div [class*="_inputDiv"] input:hover {
+	outline: none;
+}
+
+/* SelectInput */
+
+div [class*="_selectInput"] {
+	display: flex;
+	flex-direction: column;
+}
+
+div [class*="_selectInput"] label {
+	text-align: left;
+}
+
+div [class*="_selectInput"] select {
+	border: none;
+	border-bottom: 1px solid red;
+	padding-left: 3px;
+}
+
+div [class*="_selectInput"] select:focus,
+div [class*="_selectInput"] select:hover {
+	outline: none;
+}
+
+/* Button */
+
+div [class*="_button"] {
+	display: flex;
+	flex-direction: row;
+}
+
+div [class*="_button"] button{
+	background-color: red;
+	border: none;
+	color: white;
+	font-weight: bold;
+	padding: 5px 8px 5px 8px;
+	width: 100%
+}
+
+
+/* SearchBar */
+
+div [class="SearchBar"] {
+	align-content: left;
+	border-radius: 25px;
+	display: flex;
+	padding: 5px
+}
+
+div [class="SearchBar"] input {
+	background-color: transparent;
+	border: none;
+	margin-left: 3px;
+}
+
+div [class="SearchBar"] input:focus,
+div [class="SearchBar"] input:hover {
+	outline: none;
+}
