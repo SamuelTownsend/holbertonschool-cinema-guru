@@ -1,25 +1,40 @@
-import logo from './logo.svg';
+import React, { useState, useEffect } from 'react';
 import './App.css';
+import localStorage from 'local-storage'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+const App = () => {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [userUsername, setUserUsername] = useState("");
+
+  useEffect(() => {
+    const accessToken = localStorage.getItem('accessToken');
+
+    if (accessToken) {
+      fetch('/api/auth/', {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${accessToken}`
+        }
+      })
+      .then(response => response.json())
+      .then(data => {
+        setIsLoggedIn(true);
+        setUserUsername(data.username);
+      })
+      .catch(error => {
+        // Handle errors here
+      });
+    }
+  }, []);
+
+  return isLoggedIn ? (
+    // The Dashboard component (To be implemented later)
+    <Dashboard />
+  ) : (
+    // The Authentication component (To be implemented later)
+    <Authentication />
   );
-}
+};
 
 export default App;
+
