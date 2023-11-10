@@ -1,0 +1,20 @@
+.container {
+  display: flex;
+}
+
+.red-box {
+  flex: 1; /* This will make both red-box elements take equal space */
+  margin: 5px;
+  background-color: red;
+  padding: 10px;
+}
+
+button {
+  border: none;
+  background-color: red;
+  color: white;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+
