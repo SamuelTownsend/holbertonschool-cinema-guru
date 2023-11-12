@@ -4,6 +4,8 @@ import SideBar from '../../components/navigation/SideBar'; // Importing the Side
 import HomePage from './HomePage' // Importing the HomePage component (needs to be created)
 import Favorites from './Favorites'; // Importing the Favorites component (needs to be created)
 import WatchLater from './WatchLater'; // Importing the WatchLater component (needs to be created)
+import Header from '../../components/navigation/Header';
+import './dashboard.css'
 
 const Dashboard = ({ userUsername, setIsLoggedIn }) => {
   // ... (your existing Dashboard logic)
@@ -11,7 +13,10 @@ const Dashboard = ({ userUsername, setIsLoggedIn }) => {
   return (
     <BrowserRouter>
       <div className="dashboard-container">
+
+      <Header userUsername={userUsername} setIsLoggedIn={setIsLoggedIn} />
         <SideBar />
+        
         <Routes>
           <Route exact  path="/home" element={<HomePage />} />
           <Route exact  path="/favorites" element={<Favorites />} />

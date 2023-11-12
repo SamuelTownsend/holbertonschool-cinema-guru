@@ -7,9 +7,6 @@ const MovieCard = ({ movie }) => {
   const [isFavorite, setIsFavorite] = useState(false);
   const [isWatchLater, setIsWatchLater] = useState(false);
 
- 
-
- 
   useEffect(() => {
     const fetchUserFavorites = () => {
       fetch('http://localhost:8000/api/titles/favorite')
@@ -36,36 +33,27 @@ const MovieCard = ({ movie }) => {
           console.error('Error fetching user watch later list:', error);
         });
     };
-  
 
     fetchUserFavorites();
     fetchUserWatchLater();
   }, [movie]);
 
-
-
   const handleClick = (type) => {
     const endpoint = `http://localhost:8000/api/titles/${type}/${movie.imdbId}`;
 
-    if (type === 'favorite') {
-      const method = isFavorite ? 'DELETE' : 'POST';
-      fetch(endpoint, { method })
-        .then(response => {
+    const method = type === 'favorite' ? (isFavorite ? 'DELETE' : 'POST') : (isWatchLater ? 'DELETE' : 'POST');
+
+    fetch(endpoint, { method })
+      .then(response => {
+        if (type === 'favorite') {
           setIsFavorite(!isFavorite);
-        })
-        .catch(error => {
-          console.error(`Error ${method === 'DELETE' ? 'removing' : 'adding to'} favorites:`, error);
-        });
-    } else if (type === 'watchlater') {
-      const method = isWatchLater ? 'DELETE' : 'POST';
-      fetch(endpoint, { method })
-        .then(response => {
+        } else if (type === 'watchlater') {
           setIsWatchLater(!isWatchLater);
-        })
-        .catch(error => {
-          console.error(`Error ${method === 'DELETE' ? 'removing' : 'adding to'} watch later:`, error);
-        });
-    }
+        }
+      })
+      .catch(error => {
+        console.error(`Error ${method === 'DELETE' ? 'removing' : 'adding to'} ${type}:`, error);
+      });
   };
 
   return (

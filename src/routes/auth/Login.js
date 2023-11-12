@@ -5,7 +5,7 @@ import './auth.css'
 const Login = ({ username, password, setUsername, setPassword, onSubmit }) => {
   return (
     <form onSubmit={onSubmit}>
-      <div classname="Username">
+      <div className="LoginRegister">
         <Input
         
           type="text"
@@ -13,7 +13,7 @@ const Login = ({ username, password, setUsername, setPassword, onSubmit }) => {
           value={username}
           setValue={setUsername}
         />
-      </div>
+      
       <Input
         type="password"
         label="Password"
@@ -21,6 +21,7 @@ const Login = ({ username, password, setUsername, setPassword, onSubmit }) => {
         setValue={setPassword}
       />
       <Button type="submit" label="Login" />
+      </div>
     </form>
   );
 };

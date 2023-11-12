@@ -1,0 +1,111 @@
+/* navigation.css */
+
+nav {
+  display: flex;
+  align-items: center; /* Align items vertically in the center */
+  padding: 10px;
+  background-color: #333; /* Example background color */
+  color: white;
+}
+
+img {
+  width: 50px; /* Adjust the width as needed */
+  height: 50px; /* Adjust the height as needed */
+  border-radius: 50%; /* Make the image a circle */
+  margin-right: 10px; /* Add some space to the right of the image */
+}
+
+p {
+  margin-right: auto; /* Push the welcome text to the left */
+}
+
+span {
+  cursor: pointer;
+  padding: 5px 10px;
+  background-color: #555; /* Example background color for the logout button */
+  color: white;
+  border-radius: 5px;
+}
+
+.icon {
+  margin-right: 5px; /* Add some space to the right of the icon */
+}
+
+/* navigation.css */
+
+/* navigation.css */
+
+
+/* navigation.css */
+
+
+/* navigation.css */
+
+/* navigation.css */
+
+/* navigation.css */
+
+/* navigation.css */
+
+.Sidebar {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  position: relative; /* Add position relative to use absolute positioning */
+  margin-top: 50px;
+}
+
+.Pages {
+  display: flex;
+  flex-direction: column;
+  background-color: red; /* Set the background color only for the Pages section */
+  padding: 10px;
+  position: absolute;
+  top: 70px;
+  bottom: 0;
+  left: 0;
+  width: 50px; /* Adjust the width to your preference */
+}
+
+.pageBlock {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  padding: 10px;
+  margin-bottom: 5px;
+}
+
+.pageIcon {
+  margin-right: 10px;
+}
+
+.pageDesc {
+  display: none;
+}
+
+.showPageDesc .pageDesc {
+  display: block;
+}
+
+.activitiesBlock {
+  padding: 10px;
+}
+
+.latestHeader {
+  color: white;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.activityItems {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.activityItems li {
+  margin-bottom: 5px;
+  color: white;
+}
+
+

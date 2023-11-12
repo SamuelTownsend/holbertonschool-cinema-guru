@@ -52,30 +52,32 @@ const Authentication = ({ setIsLoggedIn, setUserUsername }) => {
   };
 
   return (
-    <div className='container'>
-      <form onSubmit={handleSubmit}>
-        <div classname="buttons-box">
+    <div className='Authentication'>
+      <form className='SignInUpForm' onSubmit={handleSubmit}>
+        <div className="SignInUpDiv">
           {/* Existing buttons for Sign In and Sign Up */}
-          <div className='red-box' ><Button label="Sign In" onClick={handleSignIn} />
+          <Button className={!_switchBoolean ? "active" : "inactive"} label="Sign In" onClick={handleSignIn} />
           
-          </div>
-          <div className='red-box'><Button label="Sign Up" onClick={handleSignUp} /></div>
+          
+          <Button className={!_switchBoolean ? "active" : "inactive"} label="Sign Up" onClick={handleSignUp} />
         </div>
-        {_switchBoolean ? (
-          <Login
-            username={username}
-            password={password}
-            setUsername={setUsername}
-            setPassword={setPassword}
-          />
-        ) : (
-          <Register
-            username={username}
-            password={password}
-            setUsername={setUsername}
-            setPassword={setPassword}
-          />
-        )}
+        <div className='LoginRegisterForm'>
+          {_switchBoolean ? (
+            <Login
+              username={username}
+              password={password}
+              setUsername={setUsername}
+              setPassword={setPassword}
+            />
+          ) : (
+            <Register
+              username={username}
+              password={password}
+              setUsername={setUsername}
+              setPassword={setPassword}
+            />
+          )}
+        </div>
       </form>
     </div>
   );
