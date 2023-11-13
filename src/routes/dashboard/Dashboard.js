@@ -15,7 +15,9 @@ const Dashboard = ({ userUsername, setIsLoggedIn }) => {
       <div className="dashboard-container">
 
       <Header userUsername={userUsername} setIsLoggedIn={setIsLoggedIn} />
-        <SideBar />
+
+      <div className='SideBar' ><SideBar /></div>
+        
         
         <Routes>
           <Route exact  path="/home" element={<HomePage />} />

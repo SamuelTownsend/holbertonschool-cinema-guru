@@ -10,7 +10,7 @@ const App = () => {
     const accessToken = localStorage.getItem('accessToken');
 
     if (accessToken) {
-      fetch('/api/auth/user', {
+      fetch('https:localhost:8000/api/auth/user', {
         method: 'POST', // Assuming you want to send a post request to /api/auth/user
         headers: {
           'Authorization': `Bearer ${accessToken}`
@@ -37,12 +37,16 @@ const App = () => {
 
   return isLoggedIn ? (
     // The Dashboard component (To be implemented later)
-    <Dashboard userUsername={userUsername}
-          setIsLoggedIn={setIsLoggedIn}/>
+   
+      <Dashboard userUsername={userUsername}
+            setIsLoggedIn={setIsLoggedIn}/>
+   
   ) : (
     // The Authentication component (To be implemented later)
-    <Authentication setIsLoggedIn={setIsLoggedIn}
-          setUserUsername={setUserUsername} />
+    
+      <Authentication setIsLoggedIn={setIsLoggedIn}
+            setUserUsername={setUserUsername} />
+   
   );
 };
 

@@ -6,6 +6,7 @@ const Register = ({ username, password, setUsername, setPassword, onSubmit }) =>
   return (
     <form onSubmit={onSubmit}>
       <div className='LoginRegister'>
+        <h4>Please sign Up</h4>
         <Input
           type="text"
           label="Username"

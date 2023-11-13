@@ -47,24 +47,27 @@ span {
 
 /* navigation.css */
 
+/* navigation.css */
+
 .Sidebar {
   display: flex;
   flex-direction: column;
   padding: 10px;
-  position: relative; /* Add position relative to use absolute positioning */
+  position: relative;
   margin-top: 50px;
 }
 
 .Pages {
   display: flex;
   flex-direction: column;
-  background-color: red; /* Set the background color only for the Pages section */
+  background-color: red;
   padding: 10px;
   position: absolute;
   top: 70px;
   bottom: 0;
   left: 0;
-  width: 50px; /* Adjust the width to your preference */
+  width: 50px;
+  color: black; /* Set the text color to black */
 }
 
 .pageBlock {
@@ -107,5 +110,6 @@ span {
   margin-bottom: 5px;
   color: white;
 }
+
 
 

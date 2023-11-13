@@ -35,3 +35,42 @@ select {
 }
 
 /* Add any additional styling for Tag component if needed */
+/* movies.css */
+
+/* Add styles for the movie card container */
+.movie-card-container {
+  border: 1px solid #ddd; /* Add border for separation */
+  margin: 10px; /* Add margin to create space between movie cards */
+  padding: 10px; /* Add padding for better visual appearance */
+  width: 200px; /* Set a fixed width for each movie card */
+  display: inline-block; /* Display movie cards in a row */
+  vertical-align: top; /* Align movie cards to the top of the container */
+}
+
+/* Add styles for other elements within the movie card if needed */
+.movie-card-container h3 {
+  margin-bottom: 5px;
+}
+
+.movie-card-container p {
+  margin-bottom: 10px;
+}
+
+.movie-card-container ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.movie-card-container ul li {
+  margin-bottom: 5px;
+}
+
+.icon-container {
+  margin-top: 10px;
+}
+
+/* Add styles for the active state of icons if needed */
+.icon-container .active {
+  color: red; /* Change the color to indicate the active state */
+}

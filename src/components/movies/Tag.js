@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './movies.css'; // Importing the CSS file
 
-const Tag = ({ genre, filter, genres, setGenres }) => {
+const Tag = ({ genre, genres, setGenres }) => {
   const [selected, setSelected] = useState(false);
 
   const handleTag = () => {
@@ -17,11 +17,13 @@ const Tag = ({ genre, filter, genres, setGenres }) => {
   };
 
   return (
-    <li
-      onClick={handleTag}
-      className={selected ? 'tag-selected' : 'tag'}
-    >
-      {genre}
+    <li>
+      <button
+        onClick={handleTag}
+        className={selected ? 'tag-selected' : 'tag'}
+      >
+        {genre}
+      </button>
     </li>
   );
 };

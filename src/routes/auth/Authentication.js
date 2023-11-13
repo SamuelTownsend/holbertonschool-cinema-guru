@@ -20,14 +20,23 @@ const Authentication = ({ setIsLoggedIn, setUserUsername }) => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    if (!username.trim() || !password.trim()) {
+      // Display an error message, prevent further execution
+      console.error('Username and password are required');
+      return;
+    }
     if (_switchBoolean) {
       try {
         const response = await axios.post('http://localhost:8000/api/auth/login', {
+          
           username: username,
           password: password,
-        });
-        const token = response.data.token;
+        }
+        
+        );
+        const token = response.data.accessToken;
         localStorage.setItem('token', token);
+        console.log(`${response.data.accessToken}`)
         setUserUsername(username);
         setIsLoggedIn(true);
       } catch (error) {
@@ -39,9 +48,15 @@ const Authentication = ({ setIsLoggedIn, setUserUsername }) => {
         const response = await axios.post('http://localhost:8000/api/auth/register', {
           username: username,
           password: password,
-        });
-        const token = response.data.token;
+        }
+        
+        );
+        const token = response.data.accessToken;
+
+       
+
         localStorage.setItem('token', token);
+        console.log(`${response.data.accessToken}`)
         setUserUsername(username);
         setIsLoggedIn(true);
       } catch (error) {
@@ -68,6 +83,7 @@ const Authentication = ({ setIsLoggedIn, setUserUsername }) => {
               password={password}
               setUsername={setUsername}
               setPassword={setPassword}
+              onSubmit={handleSignIn}
             />
           ) : (
             <Register
@@ -75,6 +91,7 @@ const Authentication = ({ setIsLoggedIn, setUserUsername }) => {
               password={password}
               setUsername={setUsername}
               setPassword={setPassword}
+              onSubmit={handleSignUp}
             />
           )}
         </div>

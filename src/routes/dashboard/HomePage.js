@@ -2,11 +2,12 @@ import React, { useState, useEffect } from 'react';
 import MovieCard from '../../components/movies/MovieCard';
 import Filter from '../../components/movies/Filter';
 import Button from '../../components/general/Button';
-import Tag from '../../components/movies/Tag';
+import axios from 'axios';
+
 import './dashboard.css';
 
 const HomePage = () => {
-  const accessToken = localStorage.getItem('accessToken');
+  const accessToken = localStorage.getItem('token');
   const [movies, setMovies] = useState([]);
   const [minYear, setMinYear] = useState(1970);
   const [maxYear, setMaxYear] = useState(2022);
@@ -18,35 +19,41 @@ const HomePage = () => {
  
 
   useEffect(() => {
+    console.log(accessToken)
     const loadMovies = (page) => {
-      fetch('http://localhost:8000/api/titles/advancedsearch', {
-  method: 'GET',
-  headers: {
-    'Authorization': `Bearer ${accessToken}`,
-    'Accept': 'application/json',
-    // Omit the following headers for a GET request unless you are sending data in the request body
-    // 'Content-Type': 'application/json',
-    // 'Content-Length': xy,
-  },
-})
-  .then(response => response.json())
-  .then(data => {
-    // Handle the response data
-  })
-  .catch(error => {
-    console.error('Error fetching movies:', error);
-  });
-
+      axios.get('http://localhost:8000/api/titles/advancedsearch', {
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+          Accept: 'application/json',
+        },
+        params: {
+          minYear,
+          maxYear,
+          genres,
+          sort,
+          title,
+          page,
+        },
+      })
+        .then(response => {
+          // Use response.data directly, no need for response.json()
+          setMovies(response.data);
+        })
+        .catch(error => {
+          console.error('Error fetching movies:', error);
+        });
     };
+  
     loadMovies(page);
-  }, [ accessToken, minYear, maxYear, genres, sort, title, page]);
+  }, [accessToken, minYear, maxYear, genres, sort, title, page]);
+  
 
   const handleLoadMore = () => {
     setPage(page + 1);
   };
 
   return (
-    <div>
+    <div className='movie-container'>
       <Filter
         minYear={minYear}
         setMinYear={setMinYear}
@@ -59,12 +66,13 @@ const HomePage = () => {
         title={title}
         setTitle={setTitle}
       />
-      {movies.map(movie => (
+       {Array.isArray(movies.titles) && movies.titles.map(movie => (
         <MovieCard key={movie.id} movie={movie} />
       ))}
       <Button onClick={handleLoadMore}>Load More..</Button>
     </div>
   );
 };
+
 
 export default HomePage;

@@ -1,65 +1,73 @@
 import React, { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart, faClock } from '@fortawesome/free-solid-svg-icons';
-import './movies.css'; // Importing the CSS file
+import './movies.css';
+import axios from 'axios'; // Import Axios
 
 const MovieCard = ({ movie }) => {
   const [isFavorite, setIsFavorite] = useState(false);
   const [isWatchLater, setIsWatchLater] = useState(false);
 
   useEffect(() => {
-    const fetchUserFavorites = () => {
-      fetch('http://localhost:8000/api/titles/favorite')
-        .then(response => response.json())
-        .then(data => {
-          const favoriteMovies = data;
-          const foundFavorite = favoriteMovies.some(favorite => favorite.id === movie.id);
-          setIsFavorite(foundFavorite);
-        })
-        .catch(error => {
-          console.error('Error fetching user favorites:', error);
+    const fetchUserFavorites = async () => {
+      try {
+        const accessToken = localStorage.getItem('token');
+        const response = await axios.get('http://localhost:8000/api/titles/favorite', {
+          headers: { Authorization: `Bearer ${accessToken}` },
         });
+        const favoriteMovies = response.data;
+        const foundFavorite = favoriteMovies.some((favorite) => favorite.id === movie.id);
+        setIsFavorite(foundFavorite);
+      } catch (error) {
+        console.error('Error fetching user favorites:', error);
+      }
     };
 
-    const fetchUserWatchLater = () => {
-      fetch('http://localhost:8000/api/titles/watchlater')
-        .then(response => response.json())
-        .then(data => {
-          const watchLaterMovies = data;
-          const foundWatchLater = watchLaterMovies.some(watchLater => watchLater.id === movie.id);
-          setIsWatchLater(foundWatchLater);
-        })
-        .catch(error => {
-          console.error('Error fetching user watch later list:', error);
+    const fetchUserWatchLater = async () => {
+      try {
+        const accessToken = localStorage.getItem('token');
+        const response = await axios.get('http://localhost:8000/api/titles/watchlater', {
+          headers: { Authorization: `Bearer ${accessToken}` },
         });
+        const watchLaterMovies = response.data;
+        const foundWatchLater = watchLaterMovies.some((watchLater) => watchLater.id === movie.id);
+        setIsWatchLater(foundWatchLater);
+      } catch (error) {
+        console.error('Error fetching user watch later list:', error);
+      }
     };
 
     fetchUserFavorites();
     fetchUserWatchLater();
   }, [movie]);
 
-  const handleClick = (type) => {
+  const handleClick = async (type) => {
     const endpoint = `http://localhost:8000/api/titles/${type}/${movie.imdbId}`;
-
+    const accessToken = localStorage.getItem('token');
     const method = type === 'favorite' ? (isFavorite ? 'DELETE' : 'POST') : (isWatchLater ? 'DELETE' : 'POST');
 
-    fetch(endpoint, { method })
-      .then(response => {
-        if (type === 'favorite') {
-          setIsFavorite(!isFavorite);
-        } else if (type === 'watchlater') {
-          setIsWatchLater(!isWatchLater);
-        }
+    try {
+      await axios({
+        method,
+        url: endpoint,
+        headers: { Authorization: `Bearer ${accessToken}` },
       })
-      .catch(error => {
-        console.error(`Error ${method === 'DELETE' ? 'removing' : 'adding to'} ${type}:`, error);
-      });
+      .then(response => {console.log(response)})
+
+      if (type === 'favorite') {
+        setIsFavorite(!isFavorite);
+      } else if (type === 'watchlater') {
+        setIsWatchLater(!isWatchLater);
+      }
+    } catch (error) {
+      console.error(`Error ${method === 'DELETE' ? 'removing' : 'adding to'} ${type}:`, error);
+    }
   };
 
   return (
-    <li>
+    <li className='movie-card-container'>
       <h3>{movie.title}</h3>
-      <p>{movie.synopsis}</p>
+      <p>{movie.synopsis} test</p>
       <ul>
         {movie.genres.map((genre, index) => (
           <li key={index}>{genre}</li>
@@ -82,3 +90,4 @@ const MovieCard = ({ movie }) => {
 };
 
 export default MovieCard;
+
