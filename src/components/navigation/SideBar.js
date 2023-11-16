@@ -33,84 +33,86 @@ const SideBar = () => {
   }, []);
 
   return (
-    <div
-      className={`Sidebar${small ? "_small" : ""}`}
-      onMouseEnter={() => {
-        setSmall(false);
-        setShowActivities(true);
-      }}
-      onMouseLeave={() => {
-        setSmall(true);
-        setShowActivities(false);
-      }}
-    >
-      <div className='Pages'>
-        <div
-          className={`Home${selected === 'home' ? '_active' : ''}`}
-          onClick={() => {
-            setPage('home');
-            navigate('/');
-          }}
-        >
-          <div className='pageBlock'>
-            <div className='pageIcon'>
-              <FontAwesomeIcon icon={faFolder} />
+    
+      <div
+        className={`Sidebar${small ? "_small" : ""}${showActivities ? " Sidebar_red" : ""}`}
+        onMouseEnter={() => {
+          setSmall(false);
+          setShowActivities(true);
+        }}
+        onMouseLeave={() => {
+          setSmall(true);
+          setShowActivities(false);
+        }}
+      >
+        <div className='Pages'>
+          <div
+            className={`Home${selected === 'home' ? '_active' : ''}`}
+            onClick={() => {
+              setPage('home');
+              navigate('/');
+            }}
+          >
+            <div className='pageBlock'>
+              <div className='pageIcon'>
+                <FontAwesomeIcon icon={faFolder} />
+              </div>
+              {!small ?
+                <div className='pageDesc'>
+                  Home
+                </div> : ''}
             </div>
-            {!small ?
-              <div className='pageDesc'>
-                Home
-              </div> : ''}
+          </div>
+          <div
+            className={`Favorites${selected === 'favorites' ? '_active' : ''}`}
+            onClick={() => {
+              setPage('favorites');
+              navigate('/favorites');
+            }}
+          >
+            <div className='pageBlock'>
+              <div className='pageIcon'>
+                <FontAwesomeIcon icon={faStar} />
+              </div>
+              {!small ?
+                <div className='pageDesc'>
+                  Favorites
+                </div> : ''}
+            </div>
+          </div>
+          <div
+            className={`WatchLater${selected === 'watchLater' ? '_active' : ''}`}
+            onClick={() => {
+              setPage('watchLater');
+              navigate('/watchlater');
+            }}
+          >
+            <div className='pageBlock'>
+              <div className='pageIcon'>
+                <FontAwesomeIcon icon={faClock} />
+              </div>
+              {!small ?
+                <div className='pageDesc'>
+                  Watch Later
+                </div> : ''}
+            </div>
           </div>
         </div>
-        <div
-          className={`Favorites${selected === 'favorites' ? '_active' : ''}`}
-          onClick={() => {
-            setPage('favorites');
-            navigate('/favorites');
-          }}
-        >
-          <div className='pageBlock'>
-            <div className='pageIcon'>
-              <FontAwesomeIcon icon={faStar} />
+        {!small ?
+          <div className='activitiesBlock'>
+            <p className='latestHeader'>
+              Latest Activities
+            </p>
+            <div className='activityList'>
+              <ul className='activityItems'>
+                {activities.map((activity, index) => (
+                  <Activity key={index} activityText={activity} />
+                ))}
+              </ul>
             </div>
-            {!small ?
-              <div className='pageDesc'>
-                Favorites
-              </div> : ''}
-          </div>
-        </div>
-        <div
-          className={`WatchLater${selected === 'watchLater' ? '_active' : ''}`}
-          onClick={() => {
-            setPage('watchLater');
-            navigate('/watchlater');
-          }}
-        >
-          <div className='pageBlock'>
-            <div className='pageIcon'>
-              <FontAwesomeIcon icon={faClock} />
-            </div>
-            {!small ?
-              <div className='pageDesc'>
-                Watch Later
-              </div> : ''}
-          </div>
-        </div>
+          </div> : ''}
       </div>
-      {!small ?
-        <div className='activitiesBlock'>
-          <p className='latestHeader'>
-            Latest Activities
-          </p>
-          <div className='activityList'>
-            <ul className='activityItems'>
-              {activities.map((activity, index) => (
-                <Activity key={index} activityText={activity} />
-              ))}
-            </ul>
-          </div>
-        </div> : ''}
-    </div>
+    
   );
 };
 

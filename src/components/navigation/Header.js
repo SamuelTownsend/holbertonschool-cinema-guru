@@ -13,6 +13,7 @@ const Header = ({ userUsername, setIsLoggedIn }) => {
     <nav>
       <img src="https://picsum.photos/100/100" alt="User Avatar" />
       <p>Welcome, {userUsername}</p>
+      <h1>Holberton Cinema Guru</h1>
       <span onClick={logout}>
         <i className="icon">ICON</i> Logout
       </span>

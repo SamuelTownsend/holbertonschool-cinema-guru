@@ -12,13 +12,14 @@ const Dashboard = ({ userUsername, setIsLoggedIn }) => {
 
   return (
     <BrowserRouter>
-      <div className="dashboard-container">
+      
 
       <Header userUsername={userUsername} setIsLoggedIn={setIsLoggedIn} />
 
       <div className='SideBar' ><SideBar /></div>
         
-        
+      <div className="dashboard-container">
+      
         <Routes>
           <Route exact  path="/home" element={<HomePage />} />
           <Route exact  path="/favorites" element={<Favorites />} />

@@ -15,9 +15,12 @@
 .search-bar {
   flex-basis: 100%; /* Take up full width on the first line */
   margin-bottom: 10px; /* Add some space between search bar and other inputs */
+  background-color: transparent;
+  
 }
 
 .year-filter {
+  background-color: transparent;
   display: flex;
   gap: 10px; /* Add some space between the year filter inputs */
 }
@@ -35,7 +38,8 @@ select {
 }
 
 .genres-list {
-  display: inline-block;
+  display: flex;
+
   
   gap: 5px; /* Add some space between genres */
 }
@@ -131,12 +135,40 @@ align-content: center;
 }
 
 
+.genre-Tags li {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  list-style-type: none;
 
+}
 
-.genre-Tags {
-
-  display: inline-block;
+.genre-Tags button {
+  list-style: none;
+  
   margin-right: 20px;
+  background-color: transparent; /* Set the initial background color to transparent */
+  border: 1px solid #ff0000; /* Set border color to red */
+  color: #ff0000; /* Set text color to red */
+  padding: 5px 10px; /* Add padding for better appearance */
+  cursor: pointer;
+  transition: background-color 0.3s ease; /* Add a smooth transition effect */
+
+}
+
+.genre-Tags button:hover {
+  background-color: #ff0000; /* Change background color to red on hover */
+  color: #ffffff; /* Change text color to white on hover */
+  list-style: none;
+}
+
+
+
+.input-box {
+
+  background-color: transparent;
+  color: white;
+  border-bottom: 1px solid red;
 
 }
 

@@ -1,5 +1,11 @@
 /* navigation.css */
 
+h1 {
+
+  align-content: center;
+  margin-right: 1000px;
+}
+
 nav {
   display: flex;
   align-items: center; /* Align items vertically in the center */
@@ -50,6 +56,22 @@ span {
 /* navigation.css */
 
 
+/* navigation.css */
+
+.Sidebar {
+  transition: width 1.0s ease; /* Add transition for smooth width changes */
+  overflow: hidden; /* Hide overflowing content */
+  background-color: red;
+}
+
+.Sidebar_red {
+  background-color: red; /* Set the background color */
+  width: 200px;
+  height: 1000px;
+}
+
+
+/* ... (your existing styles) */
 
 
 

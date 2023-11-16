@@ -22,7 +22,7 @@ const Filter = ({
   return (
     <div className="filter-container">
       <div className="search-bar">
-        <input
+        <input className='input-box'
           type="text"
           placeholder="Search by title"
           value={title}
@@ -30,19 +30,19 @@ const Filter = ({
         />
       </div>
       <div className="year-filter">
-        <input
+        <input className='input-box'
           type="number"
           placeholder="Min Year"
           value={minYear}
           onChange={(e) => setMinYear(parseInt(e.target.value))}
         />
-        <input
+        <input className='input-box'
           type="number"
           placeholder="Max Year"
           value={maxYear}
           onChange={(e) => setMaxYear(parseInt(e.target.value))}
         />
-        <select
+        <select className='input-box'
         value={sort}
         onChange={(e) => setSort(e.target.value)}
       >
