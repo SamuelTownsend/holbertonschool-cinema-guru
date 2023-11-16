@@ -4,7 +4,7 @@ nav {
   display: flex;
   align-items: center; /* Align items vertically in the center */
   padding: 10px;
-  background-color: #333; /* Example background color */
+  background-color: #161616; /* Example background color */
   color: white;
 }
 
@@ -49,67 +49,7 @@ span {
 
 /* navigation.css */
 
-.Sidebar {
-  display: flex;
-  flex-direction: column;
-  padding: 10px;
-  position: relative;
-  margin-top: 50px;
-}
 
-.Pages {
-  display: flex;
-  flex-direction: column;
-  background-color: red;
-  padding: 10px;
-  position: absolute;
-  top: 70px;
-  bottom: 0;
-  left: 0;
-  width: 50px;
-  color: black; /* Set the text color to black */
-}
-
-.pageBlock {
-  display: flex;
-  align-items: center;
-  cursor: pointer;
-  padding: 10px;
-  margin-bottom: 5px;
-}
-
-.pageIcon {
-  margin-right: 10px;
-}
-
-.pageDesc {
-  display: none;
-}
-
-.showPageDesc .pageDesc {
-  display: block;
-}
-
-.activitiesBlock {
-  padding: 10px;
-}
-
-.latestHeader {
-  color: white;
-  font-weight: bold;
-  margin-bottom: 5px;
-}
-
-.activityItems {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-.activityItems li {
-  margin-bottom: 5px;
-  color: white;
-}
 
 
 

@@ -66,24 +66,32 @@ const MovieCard = ({ movie }) => {
 
   return (
     <li className='movie-card-container'>
-      <h3>{movie.title}</h3>
-      <p>{movie.synopsis} test</p>
-      <ul>
-        {movie.genres.map((genre, index) => (
-          <li key={index}>{genre}</li>
-        ))}
-      </ul>
+      <div className='movie-content'>
       <div className="icon-container">
-        <FontAwesomeIcon
-          icon={faHeart}
-          className={isFavorite ? 'active' : ''}
-          onClick={() => handleClick('favorite')}
-        />
-        <FontAwesomeIcon
-          icon={faClock}
-          className={isWatchLater ? 'active' : ''}
-          onClick={() => handleClick('watchlater')}
-        />
+          <FontAwesomeIcon
+            icon={faHeart}
+            className={isFavorite ? 'active' : ''}
+            onClick={() => handleClick('favorite')}
+          />
+          <FontAwesomeIcon
+            icon={faClock}
+            className={isWatchLater ? 'active' : ''}
+            onClick={() => handleClick('watchlater')}
+          />
+          
+        </div>
+        
+        <h3>{movie.title}</h3>
+        
+        <div className='black-box-container'>
+          <p>{movie.synopsis}</p>
+          <ul>
+            {movie.genres.map((genre, index) => (
+              <li key={index}>{genre}</li>
+            ))}
+          </ul>
+                </div>
+                
       </div>
     </li>
   );

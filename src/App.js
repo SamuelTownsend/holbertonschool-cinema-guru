@@ -2,18 +2,18 @@ import React, { useState, useEffect } from 'react';
 import './App.css';
 import Authentication from './routes/auth/Authentication';
 import Dashboard from './routes/dashboard/Dashboard';
+import axios from 'axios';
 const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [userUsername, setUserUsername] = useState("");
 
   useEffect(() => {
-    const accessToken = localStorage.getItem('accessToken');
+    const accessToken = localStorage.getItem('token');
 
     if (accessToken) {
-      fetch('https:localhost:8000/api/auth/user', {
-        method: 'POST', // Assuming you want to send a post request to /api/auth/user
+      axios.post('http:localhost:8000/api/auth', {
         headers: {
-          'Authorization': `Bearer ${accessToken}`
+          authorization: `Bearer ${accessToken}`
         }
       })
         .then(response => {
@@ -23,6 +23,8 @@ const App = () => {
             throw new Error('Failed to fetch user details');
           }
         })
+
+        
         .then(data => {
           setIsLoggedIn(true);
           setUserUsername(data.username);

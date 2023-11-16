@@ -58,7 +58,7 @@ const Authentication = ({ setIsLoggedIn, setUserUsername }) => {
         localStorage.setItem('token', token);
         console.log(`${response.data.accessToken}`)
         setUserUsername(username);
-        setIsLoggedIn(true);
+        
       } catch (error) {
         console.error('Registration failed:', error);
         // Handle registration error, show a message, etc.

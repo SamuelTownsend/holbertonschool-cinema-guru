@@ -42,8 +42,7 @@ const Filter = ({
           value={maxYear}
           onChange={(e) => setMaxYear(parseInt(e.target.value))}
         />
-      </div>
-      <select
+        <select
         value={sort}
         onChange={(e) => setSort(e.target.value)}
       >
@@ -52,6 +51,8 @@ const Filter = ({
         <option value="highestrated">Highest Rated</option>
         <option value="lowestrated">Lowest Rated</option>
       </select>
+      </div>
+      
       <div className="genres-list">
         {availableGenres.map((genre, index) => (
           <Tag

@@ -27,12 +27,18 @@ const Favorites = () => {
   }, [accessToken]);
 
   return (
+    <>
     <div>
       <h1 className='container'>Movies you like</h1>
-      {movies.map(movie => (
-        <MovieCard key={movie.id} movie={movie} />
-      ))}
-    </div>
+      </div>
+
+      <div className='watchLater-Favorites'>
+        {movies.map(movie => (
+          <MovieCard key={movie.id} movie={movie} />
+        ))}
+      </div>
+      </>
+    
   );
 };
 
